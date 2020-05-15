@@ -1,8 +1,14 @@
 {
   "name": "dynamic-gallery",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Work in Progress Dynamic Gallery Web Component that Supports GeoTIFF, JPG, and PNG Files",
   "main": "./dist/dynamic-gallery.js",
+  "browser": "./dist/dynamic-gallery.js",
+  "unpkg": "./dist/dynamic-gallery.js",
+  "files": [
+    "src/index.js",
+    "dist/dynamic-gallery.js"
+  ],
   "scripts": {
     "build": "npx babel src/index.js --out-file dist/dynamic-gallery.js",
     "dev": "npx babel src/index.js --watch --out-file dist/dynamic-gallery.js",
