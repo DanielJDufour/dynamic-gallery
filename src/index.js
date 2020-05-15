@@ -12,7 +12,7 @@
     }
 
     static get observedAttributes() {
-      return ['color', 'height', 'sources'];
+      return ['color', 'height', 'data-sources'];
     }
 
     // fires after the element has been attached to the DOM
@@ -24,7 +24,7 @@
       try {
         const color = this.getAttribute("color") || "chartreuse";
 
-        const sources = this.getAttribute("sources").split(",");
+        const sources = JSON.parse(this.getAttribute("data-sources"));
 
         const inner = document.createElement("div");
 
