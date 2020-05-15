@@ -1,0 +1,38 @@
+{
+  "name": "dynamic-gallery",
+  "version": "0.0.0",
+  "description": "Work in Progress Dynamic Gallery Web Component that Supports GeoTIFF, JPG, and PNG Files",
+  "main": "./dist/dynamic-gallery.js",
+  "scripts": {
+    "build": "npx babel src/index.js --out-file dist/dynamic-gallery.js",
+    "dev": "npx babel src/index.js --watch --out-file dist/dynamic-gallery.js",
+    "serve": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielJDufour/dynamic-gallery.git"
+  },
+  "keywords": [
+    "canvas",
+    "geotiff",
+    "img",
+    "jpg",
+    "png",
+    "tiff"
+  ],
+  "author": "Daniel J. Dufour",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/DanielJDufour/dynamic-gallery/issues"
+  },
+  "homepage": "https://github.com/DanielJDufour/dynamic-gallery#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/plugin-transform-classes": "^7.9.5",
+    "@babel/plugin-transform-destructuring": "^7.9.5",
+    "@babel/plugin-transform-template-literals": "^7.8.3"
+  }
+}
