@@ -12,7 +12,7 @@
     }
 
     static get observedAttributes() {
-      return ['color', 'height', 'data-sources'];
+      return ['color', 'data-sources', 'height', 'width'];
     }
 
     // fires after the element has been attached to the DOM
@@ -27,15 +27,26 @@
         const sources = JSON.parse(this.getAttribute("data-sources"));
 
         const inner = document.createElement("div");
+        inner.style.margin = "0 auto";
+        inner.style.width = this.getAttribute("width") || "300px";
 
-        const carousel = document.createElement("carousel");
+
+        const carouselWrapper = document.createElement("div");
+        carouselWrapper.className = "carousel-wrapper";
+        carouselWrapper.style.height = this.getAttribute("height") || "400px";
+        carouselWrapper.style.overflowY = 'auto';
+        carouselWrapper.style.width = "100%";
+        const carousel = document.createElement("div");
+        carousel.style.width = "100%";
+        carousel.className = "carousel";
         sources.map((source, i) => {
           const img = document.createElement("img");
           img.src = source;
-          img.height = this.getAttribute("height");
+          img.style.width = "100%";
           if (i !== this.state.page ) img.style.display = "none";
           carousel.append(img);
         });
+        carouselWrapper.appendChild(carousel);
 
         const pagination = document.createElement("ul");
         pagination.style.padding = 0;
@@ -68,13 +79,15 @@
           pagination.appendChild(li);
         });
 
-        inner.appendChild(carousel);
+        inner.appendChild(carouselWrapper);
         inner.appendChild(pagination);
 
         this.appendChild(inner);
 
       } catch (error) {
         console.error("dynamic-gallery failed to render");
+	console.error(error);
+	throw error;
       }
     }
   }
