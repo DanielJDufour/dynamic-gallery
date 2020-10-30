@@ -32,19 +32,38 @@
       return this.querySelectorAll("li").length;
     }
 
+    get sources() {
+      if (this.hasAttribute("data-sources") === false) return [];
+
+      let unparsed = this.getAttribute("data-sources");
+
+      if (typeof unparsed !== "string") return [];
+
+      if (unparsed.trim().length === 0) return [];
+
+      return JSON.parse(unparsed.trim());
+    }
+
     add(source) {
       try {
         // update data-sources in DOM
-        const sources = JSON.parse(this.getAttribute("data-sources"));
+        const sources = this.sources;
         sources.push(source);
         this.setAttribute("data-sources", JSON.stringify(sources));
+
+        const i = this.count;
+
+        // if adding first page
+        if (i === 0) this.state.page = i;
 
         // adding image
         const img = document.createElement("img");
         img.src = source;
         img.style.width = "100%";
-        img.style.display = "none";
+        if (i !== this.state.page) img.style.display = "none";
         this.querySelector(".carousel").append(img);
+
+        if (i !== this.state.page) img.style.display = "none";
 
         // update pagination
         const li = document.createElement("li");
@@ -52,11 +71,9 @@
         li.style.display = "inline-block";
         li.style.margin = "10px";
         li.style.padding = "10px";
-        li.style.background = "darkgray";
+        li.style.background = i === this.state.page ? this.color : "darkgray";
         li.style.boxShadow = "5px 5px";
         li.style.userSelect = "none";
-
-        const i = this.count;
 
         li.textContent = i + 1;
 
@@ -91,7 +108,7 @@
 
     render() {
       try {
-        const sources = JSON.parse(this.getAttribute("data-sources"));
+        const sources = this.sources;
 
         const inner = document.createElement("div");
         inner.style.margin = "0 auto";
