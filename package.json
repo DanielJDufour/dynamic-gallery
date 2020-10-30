@@ -1,6 +1,6 @@
 {
   "name": "dynamic-gallery",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Work in Progress Dynamic Gallery Web Component that Supports GeoTIFF, JPG, and PNG Files",
   "main": "./dist/dynamic-gallery.js",
   "browser": "./dist/dynamic-gallery.js",
@@ -11,7 +11,9 @@
   ],
   "scripts": {
     "build": "npx babel src/index.js --out-file dist/dynamic-gallery.js",
-    "dev": "npx babel src/index.js --watch --out-file dist/dynamic-gallery.js",
+    "build:dev": "npx babel src/index.js --watch --out-file dist/dynamic-gallery.js",
+    "dev": "concurrently \"npm run build:dev\" \"npm run serve\"",
+    "format": "npx prettier --arrow-parens=avoid --trailing-comma=none --write src/index.js",
     "serve": "npx http-server"
   },
   "repository": {
@@ -39,6 +41,7 @@
     "@babel/plugin-transform-arrow-functions": "^7.8.3",
     "@babel/plugin-transform-classes": "^7.9.5",
     "@babel/plugin-transform-destructuring": "^7.9.5",
-    "@babel/plugin-transform-template-literals": "^7.8.3"
+    "@babel/plugin-transform-template-literals": "^7.8.3",
+    "concurrently": "^5.3.0"
   }
 }

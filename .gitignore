@@ -105,3 +105,5 @@ dist
 
 # swap file
 *.swp
+
+.DS_Store

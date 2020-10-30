@@ -8,9 +8,10 @@
   <body style="text-align: center;">
     <h1>Dynamic Gallery Web Component Demo</h1>
     <div style="margin: 0 auto; max-width: 500px; text-align: center;">
-      <dynamic-gallery color="chartreuse" height="400px" width="700px" data-sources='["./data/f1040.png"]'></dynamic-gallery>
+      <dynamic-gallery color="chartreuse" debug=true height="400px" width="700px" data-sources='["./data/f1040.png"]'></dynamic-gallery>
     </div>
     <script>
+      document.querySelector("dynamic-gallery").add("./data/f1095b.png");
     </script>
   </body>
 </html>
